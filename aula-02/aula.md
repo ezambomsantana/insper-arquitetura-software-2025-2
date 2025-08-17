@@ -14,11 +14,12 @@ Já a abordagem **bottom-up** segue o caminho inverso: parte dos blocos fundamen
 
 ---
 
-# Exemplos
+# Exemplo
 
 ## Funcionários de uma empresa
 
-### 🔹 Em Python
+Em Python é bastante comum representar objetos, como um funcionario, usando um dicionário:
+
 ```python
 funcionario = {
     "nome": "Maria Silva",
@@ -31,40 +32,9 @@ print(funcionario["nome"])
 print(funcionario["salario"])
 ```
 
+Em Java, nunca usamos dicionários para representar objetos da nossa aplicação, usamos classes.
 
-```java
-import java.time.LocalDate;
-
-class Funcionario {
-    String nome;
-    String funcao;
-    double salario;
-    LocalDate dataDeContratacao;
-
-    // Construtor
-    public Funcionario(String nome, String funcao, double salario, LocalDate dataDeContratacao) {
-        this.nome = nome;
-        this.funcao = funcao;
-        this.salario = salario;
-        this.dataDeContratacao = dataDeContratacao;
-    }
-}
-```
-
-```java
-Funcionario f = new Funcionario(
-    "Maria Silva",
-    "Desenvolvedora",
-    8500.00,
-    LocalDate.of(2022, 5, 10)
-);
-
-System.out.println(f.nome);
-System.out.println(f.salario);
-```
-
-
-
+Os comportamentos podem ser implementados, esperando no parâmetro de uma função um funcionário:
 
 ```python
 from datetime import date, datetime
@@ -95,14 +65,13 @@ print(funcionario)
 
 ```
 
+Em Java, os comportamentos são implementados diretamente nas classes, e para o método ser executado, deve existir um objeto do tipo da classe.
+
 
 ```python
 
 from datetime import date, datetime
 
-# --------------------------
-# Funções de negócio
-# --------------------------
 
 def anos_na_empresa(func):
     data_contratacao = datetime.strptime(func["dataDeContratacao"], "%Y-%m-%d").date()
@@ -117,13 +86,6 @@ def cadastrar_funcionario(lista, nome, funcao, salario, data_contratacao):
     }
     lista.append(funcionario)
 
-def excluir_funcionario(lista, nome):
-    for func in lista:
-        if func["nome"] == nome:
-            lista.remove(func)
-            return True
-    return False
-
 def aumentar_salario(lista, nome, porcentagem):
     for func in lista:
         if func["nome"] == nome:
@@ -131,19 +93,14 @@ def aumentar_salario(lista, nome, porcentagem):
             return True
     return False
 
-# --------------------------
-# Main
-# --------------------------
-
 def main():
     funcionarios = []
     
     while True:
         print("\nMenu:")
         print("1 - Cadastrar Funcionário")
-        print("2 - Excluir Funcionário")
-        print("3 - Aumentar Salário")
-        print("4 - Listar Funcionários")
+        print("2 - Aumentar Salário")
+        print("3 - Listar Funcionários")
         print("0 - Sair")
         
         opcao = input("Escolha uma opção: ")
@@ -157,13 +114,6 @@ def main():
             print("Funcionário cadastrado com sucesso!")
         
         elif opcao == "2":
-            nome = input("Nome do funcionário a excluir: ")
-            if excluir_funcionario(funcionarios, nome):
-                print("Funcionário excluído.")
-            else:
-                print("Funcionário não encontrado.")
-        
-        elif opcao == "3":
             nome = input("Nome do funcionário: ")
             porcentagem = float(input("Porcentagem de aumento: "))
             if aumentar_salario(funcionarios, nome, porcentagem):
@@ -171,7 +121,7 @@ def main():
             else:
                 print("Funcionário não encontrado.")
         
-        elif opcao == "4":
+        elif opcao == "3":
             if not funcionarios:
                 print("Nenhum funcionário cadastrado.")
             else:
