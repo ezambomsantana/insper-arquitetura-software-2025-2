@@ -98,84 +98,92 @@ print(funcionario)
 
 ```python
 
-from datetime import datetime, date
+from datetime import date, datetime
 
-# Lista para armazenar funcionários
-funcionarios = []
+# --------------------------
+# Funções de negócio
+# --------------------------
 
 def anos_na_empresa(func):
     data_contratacao = datetime.strptime(func["dataDeContratacao"], "%Y-%m-%d").date()
     return date.today().year - data_contratacao.year
 
-def cadastrar_funcionario():
-    nome = input("Digite o nome do funcionário: ")
-    funcao = input("Digite a função: ")
-    salario = float(input("Digite o salário: "))
-    data_contratacao = input("Digite a data de contratação (YYYY-MM-DD): ")
-    
+def cadastrar_funcionario(lista, nome, funcao, salario, data_contratacao):
     funcionario = {
         "nome": nome,
         "funcao": funcao,
         "salario": salario,
         "dataDeContratacao": data_contratacao
     }
-    
-    funcionarios.append(funcionario)
-    print(f"\n✅ Funcionário {nome} cadastrado com sucesso!\n")
+    lista.append(funcionario)
 
-def excluir_funcionario():
-    nome = input("Digite o nome do funcionário a ser excluído: ")
-    for func in funcionarios:
-        if func["nome"].lower() == nome.lower():
-            funcionarios.remove(func)
-            print(f"\n🗑️ Funcionário {nome} excluído com sucesso!\n")
-            return
-    print("\n⚠️ Funcionário não encontrado.\n")
+def excluir_funcionario(lista, nome):
+    for func in lista:
+        if func["nome"] == nome:
+            lista.remove(func)
+            return True
+    return False
 
-def aumentar_salario():
-    nome = input("Digite o nome do funcionário que terá aumento: ")
-    for func in funcionarios:
-        if func["nome"].lower() == nome.lower():
-            porcentagem = float(input("Digite a porcentagem de aumento: "))
+def aumentar_salario(lista, nome, porcentagem):
+    for func in lista:
+        if func["nome"] == nome:
             func["salario"] *= (1 + porcentagem / 100)
-            print(f"\n💰 Salário de {nome} atualizado para {func['salario']:.2f}\n")
-            return
-    print("\n⚠️ Funcionário não encontrado.\n")
+            return True
+    return False
 
-def listar_funcionarios():
-    if not funcionarios:
-        print("\n⚠️ Nenhum funcionário cadastrado.\n")
-        return
-    print("\n📋 Lista de Funcionários:")
-    for func in funcionarios:
-        anos = anos_na_empresa(func)
-        print(f"- {func['nome']} | {func['funcao']} | R$ {func['salario']:.2f} | {anos} anos na empresa")
-    print()
+# --------------------------
+# Main
+# --------------------------
 
 def main():
+    funcionarios = []
+    
     while True:
-        print("=== Sistema de Gestão de Funcionários ===")
-        print("1. Cadastrar funcionário")
-        print("2. Excluir funcionário")
-        print("3. Aumentar salário")
-        print("4. Listar funcionários")
-        print("5. Sair")
+        print("\nMenu:")
+        print("1 - Cadastrar Funcionário")
+        print("2 - Excluir Funcionário")
+        print("3 - Aumentar Salário")
+        print("4 - Listar Funcionários")
+        print("0 - Sair")
         
         opcao = input("Escolha uma opção: ")
         
         if opcao == "1":
-            cadastrar_funcionario()
+            nome = input("Nome: ")
+            funcao = input("Função: ")
+            salario = float(input("Salário: "))
+            data_contratacao = input("Data de contratação (YYYY-MM-DD): ")
+            cadastrar_funcionario(funcionarios, nome, funcao, salario, data_contratacao)
+            print("Funcionário cadastrado com sucesso!")
+        
         elif opcao == "2":
-            excluir_funcionario()
+            nome = input("Nome do funcionário a excluir: ")
+            if excluir_funcionario(funcionarios, nome):
+                print("Funcionário excluído.")
+            else:
+                print("Funcionário não encontrado.")
+        
         elif opcao == "3":
-            aumentar_salario()
+            nome = input("Nome do funcionário: ")
+            porcentagem = float(input("Porcentagem de aumento: "))
+            if aumentar_salario(funcionarios, nome, porcentagem):
+                print("Salário atualizado.")
+            else:
+                print("Funcionário não encontrado.")
+        
         elif opcao == "4":
-            listar_funcionarios()
-        elif opcao == "5":
-            print("\n👋 Encerrando o sistema.")
+            if not funcionarios:
+                print("Nenhum funcionário cadastrado.")
+            else:
+                for f in funcionarios:
+                    print(f)
+        
+        elif opcao == "0":
+            print("Saindo...")
             break
+        
         else:
-            print("\n⚠️ Opção inválida! Tente novamente.\n")
+            print("Opção inválida!")
 
 if __name__ == "__main__":
     main()
