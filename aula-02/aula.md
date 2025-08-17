@@ -62,3 +62,123 @@ Funcionario f = new Funcionario(
 System.out.println(f.nome);
 System.out.println(f.salario);
 ```
+
+
+
+
+```python
+from datetime import date, datetime
+
+funcionario = {
+    "nome": "Maria Silva",
+    "funcao": "Desenvolvedora",
+    "salario": 8500.00,
+    "dataDeContratacao": "2022-05-10"
+}
+
+def anos_na_empresa(func):
+    data_contratacao = datetime.strptime(func["dataDeContratacao"], "%Y-%m-%d").date()
+    return date.today().year - data_contratacao.year
+
+def aumentar_salario(func, porcentagem):
+    func["salario"] *= (1 + porcentagem / 100)
+
+def mudar_funcao(func, nova_funcao):
+    func["funcao"] = nova_funcao
+
+# Uso
+print(anos_na_empresa(funcionario))
+aumentar_salario(funcionario, 10)
+mudar_funcao(funcionario, "Arquiteta de Software")
+
+print(funcionario)
+
+```
+
+
+```python
+
+from datetime import datetime, date
+
+# Lista para armazenar funcionários
+funcionarios = []
+
+def anos_na_empresa(func):
+    data_contratacao = datetime.strptime(func["dataDeContratacao"], "%Y-%m-%d").date()
+    return date.today().year - data_contratacao.year
+
+def cadastrar_funcionario():
+    nome = input("Digite o nome do funcionário: ")
+    funcao = input("Digite a função: ")
+    salario = float(input("Digite o salário: "))
+    data_contratacao = input("Digite a data de contratação (YYYY-MM-DD): ")
+    
+    funcionario = {
+        "nome": nome,
+        "funcao": funcao,
+        "salario": salario,
+        "dataDeContratacao": data_contratacao
+    }
+    
+    funcionarios.append(funcionario)
+    print(f"\n✅ Funcionário {nome} cadastrado com sucesso!\n")
+
+def excluir_funcionario():
+    nome = input("Digite o nome do funcionário a ser excluído: ")
+    for func in funcionarios:
+        if func["nome"].lower() == nome.lower():
+            funcionarios.remove(func)
+            print(f"\n🗑️ Funcionário {nome} excluído com sucesso!\n")
+            return
+    print("\n⚠️ Funcionário não encontrado.\n")
+
+def aumentar_salario():
+    nome = input("Digite o nome do funcionário que terá aumento: ")
+    for func in funcionarios:
+        if func["nome"].lower() == nome.lower():
+            porcentagem = float(input("Digite a porcentagem de aumento: "))
+            func["salario"] *= (1 + porcentagem / 100)
+            print(f"\n💰 Salário de {nome} atualizado para {func['salario']:.2f}\n")
+            return
+    print("\n⚠️ Funcionário não encontrado.\n")
+
+def listar_funcionarios():
+    if not funcionarios:
+        print("\n⚠️ Nenhum funcionário cadastrado.\n")
+        return
+    print("\n📋 Lista de Funcionários:")
+    for func in funcionarios:
+        anos = anos_na_empresa(func)
+        print(f"- {func['nome']} | {func['funcao']} | R$ {func['salario']:.2f} | {anos} anos na empresa")
+    print()
+
+def main():
+    while True:
+        print("=== Sistema de Gestão de Funcionários ===")
+        print("1. Cadastrar funcionário")
+        print("2. Excluir funcionário")
+        print("3. Aumentar salário")
+        print("4. Listar funcionários")
+        print("5. Sair")
+        
+        opcao = input("Escolha uma opção: ")
+        
+        if opcao == "1":
+            cadastrar_funcionario()
+        elif opcao == "2":
+            excluir_funcionario()
+        elif opcao == "3":
+            aumentar_salario()
+        elif opcao == "4":
+            listar_funcionarios()
+        elif opcao == "5":
+            print("\n👋 Encerrando o sistema.")
+            break
+        else:
+            print("\n⚠️ Opção inválida! Tente novamente.\n")
+
+if __name__ == "__main__":
+    main()
+
+
+```
