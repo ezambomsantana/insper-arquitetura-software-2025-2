@@ -190,3 +190,88 @@ if __name__ == "__main__":
 
 
 ```
+
+---
+
+Exercícios
+
+Exercício 1: Gerenciamento de Produtos
+
+- Classe: Produto
+
+- Atributos:
+
+    - nome (String)
+    
+    - preco (double)
+    
+    - quantidade (int)
+
+- Métodos:
+
+    - aumentarPreco(double porcentagem) – aumenta o preço em uma porcentagem.
+    
+    - alterarEstoque(int quantidade) – reduz a quantidade do produto.
+    
+
+Implementar a classe GerenciarProdutos com as funções de criar um produto, excluir produto, aumentar o preço de um produto e alterar o estoque de um produto.
+
+Exercício 2: Aluno
+
+Classe: Aluno
+
+Atributos:
+
+nome (String)
+
+nota1 (double)
+
+nota2 (double)
+
+Métodos:
+
+media() – retorna a média das notas.
+
+foiAprovado() – retorna true se a média for maior ou igual a 6, caso contrário false.
+
+atualizarNota1(double novaNota) – altera a primeira nota.
+
+Na main:
+
+Criar um aluno.
+
+Calcular e mostrar a média.
+
+Verificar se foi aprovado.
+
+Atualizar a nota1 e recalcular a média.
+
+Exercício 3: ContaBancaria
+
+Classe: ContaBancaria
+
+Atributos:
+
+titular (String)
+
+saldo (double)
+
+Métodos:
+
+depositar(double valor) – aumenta o saldo.
+
+sacar(double valor) – diminui o saldo (se houver saldo suficiente).
+
+aplicarJuros(double porcentagem) – aumenta o saldo com base em uma porcentagem.
+
+Na main:
+
+Criar uma conta.
+
+Depositar 1000.
+
+Sacar 200.
+
+Aplicar 10% de juros.
+
+Mostrar o saldo final.
