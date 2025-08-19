@@ -166,62 +166,36 @@ Exercício 1: Gerenciamento de Produtos
 
 Implementar a classe GerenciarProdutos com as funções de criar um produto, excluir produto, aumentar o preço de um produto e alterar o estoque de um produto.
 
+Implementar o main para permitir que o usuário execute todas as funções no produto.
+
+---
+
 Exercício 2: Aluno
 
-Classe: Aluno
+- Classe: Aluno
 
-Atributos:
+- Atributos:
 
-nome (String)
+    - nome (String)
 
-nota1 (double)
+    - nota1 (double)
 
-nota2 (double)
+    - nota2 (double)
+      
+    - faltas (int)
 
-Métodos:
+- Métodos:
 
-media() – retorna a média das notas.
+    - media() – retorna a média das notas.
 
-foiAprovado() – retorna true se a média for maior ou igual a 6, caso contrário false.
+    - foiAprovado() – retorna true se a média for maior ou igual a 6 e o número de faltas foi menor que 5, caso contrário false
 
-atualizarNota1(double novaNota) – altera a primeira nota.
+    - atualizarNota1(double novaNota) – altera a primeira nota, valida se a nota está entre 0 e 10.
+      
+    - atualizarNota2(double novaNota) – altera a segunda nota, valida se a nota está entre 0 e 10.
+      
+    - atualizaFaltas(int faltas) – altera o número de faltas.
 
-Na main:
+Implementar a classe GerenciaAlunos com as funções de criar um aluno e digitar notas e faltas para o aluno.
 
-Criar um aluno.
-
-Calcular e mostrar a média.
-
-Verificar se foi aprovado.
-
-Atualizar a nota1 e recalcular a média.
-
-Exercício 3: ContaBancaria
-
-Classe: ContaBancaria
-
-Atributos:
-
-titular (String)
-
-saldo (double)
-
-Métodos:
-
-depositar(double valor) – aumenta o saldo.
-
-sacar(double valor) – diminui o saldo (se houver saldo suficiente).
-
-aplicarJuros(double porcentagem) – aumenta o saldo com base em uma porcentagem.
-
-Na main:
-
-Criar uma conta.
-
-Depositar 1000.
-
-Sacar 200.
-
-Aplicar 10% de juros.
-
-Mostrar o saldo final.
+Implementar o main para permitir que o usuário execute todas as funções para os alunos.
