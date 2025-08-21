@@ -68,8 +68,11 @@ listar_alunos(curso)
 
   - Classe Pessoa e Carro:
     - Carro -> Atributos: nome, modelo, placa e anoFrabricacao.
+      
             -> Métodos: calculaIdade.
+    
     - Pessoa -> Atributos: nome, cpf e uma lista de carros.
+      
              -> Métodos: adicionarCarro, removerCarro e listarCarros.
  
 - Exercício 2
