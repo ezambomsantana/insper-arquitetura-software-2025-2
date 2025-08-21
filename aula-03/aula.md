@@ -67,12 +67,20 @@ listar_alunos(curso)
 - Exercício 1:
 
   - Classe Pessoa e Carro:
-    - Carro -> Atributos: nome, modelo, placa e anoFrabricacao.
-      
-            -> Métodos: calculaIdade.
+    - Carro -> Atributos: nome, modelo, placa e anoFrabricacao. Métodos: calculaIdade, printCarro.
     
-    - Pessoa -> Atributos: nome, cpf e uma lista de carros.
-      
-             -> Métodos: adicionarCarro, removerCarro e listarCarros.
+    - Pessoa -> Atributos: nome, cpf e uma lista de carros. Métodos: adicionarCarro, removerCarro e encontraCarroMaisNovo.
  
 - Exercício 2
+    - Classe Paciente e Médico:
+        - Paciente -> Atributos: nome, cpf, idade. Métodos: exibirPaciente.
+       
+        - Médico -> Atributos: nome, crm e uma lista de pacientes. Métodos: adicionarPaciente, removerPaciente e listarPacientes.
+     
+## Classes mais complexas
+
+Vimos exemplos com duas classes, mas podemos modelos muito maiores, as vezes com dezenas ou até centenas de classes. Exemplos:
+    - Uma clinica médica que precisa salvar os dados dos médicos, dos pacientes e das consultas marcadas.
+    - Uma empresa de aluguel de veículos que precisa salvar os dados dos clientes, dos veículos e dos emprestimos do veículo. 
+    - Uma loja que precisa salvar os clientes, as compras dos clientes, os itens dos pedidos e os estoques dos produtos.
+    
