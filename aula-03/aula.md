@@ -80,6 +80,7 @@ listar_alunos(curso)
 ## Classes mais complexas
 
 Vimos exemplos com duas classes, mas podemos modelos muito maiores, as vezes com dezenas ou até centenas de classes. Exemplos:
+
     - Uma clinica médica que precisa salvar os dados dos médicos, dos pacientes e das consultas marcadas.
     - Uma empresa de aluguel de veículos que precisa salvar os dados dos clientes, dos veículos e dos emprestimos do veículo. 
     - Uma loja que precisa salvar os clientes, as compras dos clientes, os itens dos pedidos e os estoques dos produtos.
