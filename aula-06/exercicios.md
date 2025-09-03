@@ -7,9 +7,10 @@ Implemente as seguinte APIs REST
 * **Livro** (título, ano, ISBN) -> ISBN como chave
 * **Autor** (nome, cpf, nacionalidade) -> CPF como chave
 * **Categoria** (id, nome, descrição)
-  ➡️ Relações:
-* Um **autor** pode ter vários **livros**.
-* Um **livro** pertence a uma **categoria**.
+
+* Relações:
+  * Um **autor** pode ter vários **livros**.
+  * Um **livro** pertence a uma **categoria**.
 
 ---
 
