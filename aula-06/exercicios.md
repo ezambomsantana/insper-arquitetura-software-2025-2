@@ -1,4 +1,4 @@
-Implemente as seguinte APIs REST
+Implemente as seguinte APIs REST. Para todas as entidades implementar as rotas de criar, editar, listar e buscar um pela chave (id, cpf,...).
 
 ---
 
