@@ -19,12 +19,14 @@ Implemente as seguinte APIs REST
 
 * **Filme** (id, título, gênero, duração)
 * **Sessão** (id, horário, sala)
-* **Ingresso** (id, número, cliente\_nome)
+* **Ingresso** (id, número, clienteNome)
+* **Cliente** (cpf, nome)
 
 
 * Relações:
   * Um **filme** pode ter várias **sessões**, e uma **sessão** tem um filme.
   * Uma **sessão** pode ter vários **ingressos**, e um **ingresso** é sempre de uma sessão.
+  * Um **ingresso** pertence a um cliente.
 
 ---
 
@@ -33,7 +35,6 @@ Implemente as seguinte APIs REST
 * **Usuário** (email, nome, email) -> email chave
 * **Post** (id, conteúdo, data)
 * **Comentário** (id, texto)
-
 
 * Relações:
   * Um **usuário** pode criar vários **posts**, um **post** peretence a um **usuário**.
