@@ -1,6 +1,5 @@
-package br.edu.insper.biblioteca.service;
+package br.edu.insper.biblioteca.categoria;
 
-import br.edu.insper.biblioteca.model.Categoria;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

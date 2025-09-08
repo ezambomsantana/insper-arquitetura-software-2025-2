@@ -1,4 +1,7 @@
-package br.edu.insper.biblioteca.model;
+package br.edu.insper.biblioteca.livro;
+
+import br.edu.insper.biblioteca.autor.Autor;
+import br.edu.insper.biblioteca.categoria.Categoria;
 
 public class Livro {
     private String isbn;

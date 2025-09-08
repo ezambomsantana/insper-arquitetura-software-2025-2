@@ -1,8 +1,9 @@
-package br.edu.insper.biblioteca.service;
+package br.edu.insper.biblioteca.livro;
 
-import br.edu.insper.biblioteca.model.Livro;
-import br.edu.insper.biblioteca.model.Autor;
-import br.edu.insper.biblioteca.model.Categoria;
+import br.edu.insper.biblioteca.autor.AutorService;
+import br.edu.insper.biblioteca.categoria.CategoriaService;
+import br.edu.insper.biblioteca.autor.Autor;
+import br.edu.insper.biblioteca.categoria.Categoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

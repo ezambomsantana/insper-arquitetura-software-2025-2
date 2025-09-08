@@ -1,6 +1,5 @@
-package br.edu.insper.biblioteca.service;
+package br.edu.insper.biblioteca.autor;
 
-import br.edu.insper.biblioteca.model.Autor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

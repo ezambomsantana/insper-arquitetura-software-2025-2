@@ -1,7 +1,5 @@
-package br.edu.insper.biblioteca.controller;
+package br.edu.insper.biblioteca.livro;
 
-import br.edu.insper.biblioteca.model.Livro;
-import br.edu.insper.biblioteca.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

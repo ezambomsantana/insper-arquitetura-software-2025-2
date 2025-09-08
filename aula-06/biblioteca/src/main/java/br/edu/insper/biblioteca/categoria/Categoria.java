@@ -1,5 +1,6 @@
-package br.edu.insper.biblioteca.model;
+package br.edu.insper.biblioteca.categoria;
 
+import br.edu.insper.biblioteca.livro.Livro;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
