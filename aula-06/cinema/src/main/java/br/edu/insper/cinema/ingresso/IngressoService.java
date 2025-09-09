@@ -43,6 +43,8 @@ public class IngressoService {
         ingresso.setCliente(cliente);
         ingresso.setSessao(sessao);
 
+        cliente.getIngressos().add(ingresso);
+
         ingressos.put(ingresso.getId(), ingresso);
         return ingresso;
     }

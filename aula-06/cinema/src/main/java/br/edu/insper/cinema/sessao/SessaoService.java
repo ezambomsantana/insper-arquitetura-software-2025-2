@@ -30,6 +30,8 @@ public class SessaoService {
             throw new RuntimeException("Filme não encontrado");
         }
 
+        filme.getSessoes().add(sessao);
+
         sessao.setId(UUID.randomUUID().toString());
         sessoes.put(sessao.getId(), sessao);
         return sessao;
