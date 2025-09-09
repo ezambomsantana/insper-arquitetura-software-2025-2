@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/api/livros")
+@RequestMapping("/livros")
 public class LivroController {
 
     @Autowired
