@@ -56,4 +56,19 @@ public class LivroService {
         livros.remove(isbn);
     }
 
+    public Livro editarLivro(String isbn, Livro livro) {
+        Livro livroEditar = livros.get(isbn);
+        if (livroEditar != null) {
+
+            if (livro.getTitulo() != null) {
+                livroEditar.setTitulo(livro.getTitulo());
+            }
+
+            if (livro.getAno() != null) {
+                livroEditar.setAno(livro.getAno());
+            }
+
+        }
+        return livroEditar;
+    }
 }

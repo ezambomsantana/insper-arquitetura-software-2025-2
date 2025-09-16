@@ -35,6 +35,11 @@ public class AutorController {
         return autorService.salvar(autor, usuario);
     }
 
+    @PutMapping("/{cpf}")
+    public Autor editarAutor(@PathVariable String cpf, @RequestBody Autor autor) {
+        return autorService.editarAutor(cpf, autor);
+    }
+
     @DeleteMapping("/{cpf}")
     public void removerAutor(@PathVariable String cpf) {
         autorService.deletar(cpf);

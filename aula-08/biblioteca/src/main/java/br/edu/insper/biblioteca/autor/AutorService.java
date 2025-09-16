@@ -32,4 +32,19 @@ public class AutorService {
     public void deletar(String cpf) {
         autores.remove(cpf);
     }
+
+    public Autor editarAutor(String cpf, Autor autor) {
+
+        Autor autorEditar = autores.get(cpf);
+        if (autorEditar != null) {
+            if (autor.getNome() != null) {
+                autorEditar.setNome(autor.getNome());
+            }
+
+            if (autor.getNacionalidade() != null) {
+                autorEditar.setNacionalidade(autor.getNacionalidade());
+            }
+        }
+        return autorEditar;
+    }
 }

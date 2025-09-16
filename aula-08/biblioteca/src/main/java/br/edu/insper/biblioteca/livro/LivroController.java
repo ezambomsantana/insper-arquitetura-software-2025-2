@@ -1,5 +1,6 @@
 package br.edu.insper.biblioteca.livro;
 
+import br.edu.insper.biblioteca.autor.Autor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,4 +32,10 @@ public class LivroController {
     public void removerLivro(@PathVariable String isbn) {
         livroService.deletar(isbn);
     }
+
+    @PutMapping("/{isbn}")
+    public Livro editarLivro(@PathVariable String isbn, @RequestBody Livro livro) {
+        return livroService.editarLivro(isbn, livro);
+    }
+
 }
