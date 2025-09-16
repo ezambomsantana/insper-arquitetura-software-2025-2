@@ -1,6 +1,7 @@
 package br.edu.insper.biblioteca.autor;
 
 import br.edu.insper.biblioteca.autenticacao.Usuario;
+import br.edu.insper.biblioteca.common.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -17,7 +18,11 @@ public class AutorService {
     }
 
     public Autor buscarPorCpf(String cpf) {
-        return autores.get(cpf);
+        Autor autor = autores.get(cpf);
+        if (autor == null) {
+            throw new ResourceNotFoundException("Autor não encontrado");
+        }
+        return autor;
     }
 
     public Autor salvar(Autor autor, Usuario usuario) {

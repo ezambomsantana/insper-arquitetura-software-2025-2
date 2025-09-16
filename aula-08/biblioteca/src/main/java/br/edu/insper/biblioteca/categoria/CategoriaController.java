@@ -1,7 +1,9 @@
 package br.edu.insper.biblioteca.categoria;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Collection;
 
@@ -24,6 +26,16 @@ public class CategoriaController {
 
     @PostMapping
     public Categoria criarCategoria(@RequestBody Categoria categoria) {
+
+        if (categoria.getNome() == null || categoria.getNome().equals("")) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Nome é obrigatorio");
+        }
+
+        if (categoria.getDescricao() == null || categoria.getDescricao().equals("")) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Descrição é obrigatorio");
+        }
+
+
         return categoriaService.salvar(categoria);
     }
 
