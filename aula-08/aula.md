@@ -1,4 +1,8 @@
-# Erros
+# Aprimorando nossa API
+
+Nossas APIs já estão funcionais, mas ainda falta deixar ela mais bem documentada e mais tolerante à erros. Vamos ver algumas técnicas que usamos para melhorar a qualidade da nossa API.
+
+## Tratamento de Erros
 
 Em Java, podemos lançar exceções em Java com a palavra reservada throw, como por exemplo:
 
@@ -36,7 +40,7 @@ public class Error {
 
 ```
 
-Por último precisamos mostrar a mensagem que foi passada como parâmetro na classe:
+Por último podemos customizar como a mensagem de erro será retornada para o usuário:
 
 ```java
 package br.edu.insper.biblioteca.error;
@@ -66,9 +70,54 @@ public class ErrorAdvice {
 }
 
 ```
+## Documentação da API
+
+Vimos que com o Spring é bem fácil criar um swagger para a nossa API, basta adicionar a biblioteca `springdoc-openapi-starter-webmvc-ui` no arquivo pom.xml.
 
 
-# DTOs
+```xml
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    <version>2.8.9</version>
+</dependency>
+```
+
+Assim, a API já pode ser acessada no endereço `http://localhost:8080/swagger-ui.html`.
+
+Porém, podemos deixar a documentação bem mais completa, usando algumas anotações, entre elas:
+
+```java
+@Tag(name = "Autores", description = "Operações relacionadas a autores")
+```
+
+A @Tag que pode ser adicionada na classe do controller.
+
+```java
+@Operation(
+        summary = "Lista todos os autores",
+        description = "Retorna uma lista com todos os autores cadastrados no sistema."
+)
+```
+
+O @Operation que adiciona uma descrição curta e uma longa para cada rota.
+
+
+```java
+@ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Autor encontrado",
+                content = @Content(mediaType = "application/json",
+                        schema = @Schema(implementation = Autor.class))),
+        @ApiResponse(responseCode = "404", description = "Autor não encontrado", content = @Content(mediaType = "application/json",
+                schema = @Schema(implementation = Error.class)))
+})
+```
+
+```java
+@Parameter(description = "CPF do autor a ser buscado", example = "12345678900")
+```
+
+## DTOs
 
 Em algumas rotas, usar as classes de modelo diretamente pode deixar a API "estranha", pois existem campos que não podemm ser utilizados pelo usuário, como por exemplo
 na rota de edição de autores:
