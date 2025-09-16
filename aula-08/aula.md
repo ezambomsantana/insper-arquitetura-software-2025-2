@@ -69,3 +69,41 @@ public class ErrorAdvice {
 
 
 # DTOs
+
+Em algumas rotas, usar as classes de modelo diretamente pode deixar a API "estranha", pois existem campos que não podemm ser utilizados pelo usuário, como por exemplo
+na rota de edição de autores:
+
+
+```java
+@PutMapping("/{cpf}")
+public Autor editarAutor(@PathVariable String cpf, @RequestBody Autor autor) {
+    return autorService.editarAutor(cpf, autor);
+}
+```
+
+Na classe autor, existem os campos cpf e id que não podem ser editados, mas esses cammpos existem na classe autor. Isso atrapalha a geração da documentação do swagger, já
+que a biblioteca não consegue enteder  que os campos id e cpf não podem ser editados.
+
+Por isso, usamos um padrão de projeto chamado DTO (Data Transfer Object), nele podemos criar classes diferentes apenas para a transmissão dos dados. Por exemplo, para
+a edição de um Autor:
+
+```java
+public class EditAutorDTO {
+    
+    private String nome;
+    private String nacionalidade;
+
+    // gets e sets
+}
+
+```
+
+Assim, podemos usar o
+
+
+```java
+@PutMapping("/{cpf}")
+public Autor editarAutor(@PathVariable String cpf, @RequestBody EditAutorDTO autor) {
+    return autorService.editarAutor(cpf, autor);
+}
+```
