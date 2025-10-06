@@ -4,6 +4,7 @@ import br.edu.insper.cinema.sessao.Sessao;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Filme {
@@ -19,8 +20,8 @@ public class Filme {
     private String genero;
     private Integer duracao;
 
-    @Transient
-    private ArrayList<Sessao> sessoes = new ArrayList<>();
+    @OneToMany(mappedBy = "filme")
+    private List<Sessao> sessoes = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -54,11 +55,11 @@ public class Filme {
         this.duracao = duracao;
     }
 
-    public ArrayList<Sessao> getSessoes() {
+    public List<Sessao> getSessoes() {
         return sessoes;
     }
 
-    public void setSessoes(ArrayList<Sessao> sessoes) {
+    public void setSessoes(List<Sessao> sessoes) {
         this.sessoes = sessoes;
     }
 }

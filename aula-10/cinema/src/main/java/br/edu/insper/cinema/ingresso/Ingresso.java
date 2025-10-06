@@ -4,11 +4,15 @@ import br.edu.insper.cinema.cliente.Cliente;
 import br.edu.insper.cinema.sessao.Sessao;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 public class Ingresso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    private LocalDate dataCompra;
 
     @Transient
     private Sessao sessao;
@@ -39,5 +43,13 @@ public class Ingresso {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public LocalDate getDataCompra() {
+        return dataCompra;
+    }
+
+    public void setDataCompra(LocalDate dataCompra) {
+        this.dataCompra = dataCompra;
     }
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Cliente {
@@ -20,9 +21,8 @@ public class Cliente {
     private String email;
     private String telefone;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
-    private ArrayList<Ingresso> ingressos = new ArrayList<>();
+    private List<Ingresso> ingressos = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -64,11 +64,11 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public ArrayList<Ingresso> getIngressos() {
+    public List<Ingresso> getIngressos() {
         return ingressos;
     }
 
-    public void setIngressos(ArrayList<Ingresso> ingressos) {
+    public void setIngressos(List<Ingresso> ingressos) {
         this.ingressos = ingressos;
     }
 }

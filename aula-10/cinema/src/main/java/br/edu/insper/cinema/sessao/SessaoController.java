@@ -18,7 +18,7 @@ public class SessaoController {
     }
 
     @GetMapping("/{id}")
-    public Sessao buscarPorId(@PathVariable String id) {
+    public Sessao buscarPorId(@PathVariable Integer id) {
         return sessaoService.buscarPorId(id);
     }
 
@@ -28,12 +28,12 @@ public class SessaoController {
     }
 
     @PutMapping("/{id}")
-    public Sessao atualizar(@PathVariable String id, @RequestBody Sessao cliente) {
+    public Sessao atualizar(@PathVariable Integer id, @RequestBody Sessao cliente) {
         return sessaoService.atualizar(id, cliente);
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable String id) {
+    public void deletar(@PathVariable Integer id) {
         sessaoService.deletar(id);
     }
 }

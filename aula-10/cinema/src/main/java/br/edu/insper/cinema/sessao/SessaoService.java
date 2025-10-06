@@ -9,17 +9,19 @@ import java.util.*;
 
 @Service
 public class SessaoService {
-    private final Map<String, Sessao> sessoes = new HashMap<>();
+
+    @Autowired
+    private SessaoRepository sessaoRepository;
 
     @Autowired
     private FilmeService filmeService;
 
     public List<Sessao> listarTodos() {
-        return new ArrayList<>(sessoes.values());
+        return sessaoRepository.findAll();
     }
 
-    public Sessao buscarPorId(String id) {
-        return sessoes.get(id);
+    public Sessao buscarPorId(Integer id) {
+        return sessaoRepository.findById(id).get();
     }
 
     public Sessao salvar(Sessao sessao) {
@@ -29,15 +31,12 @@ public class SessaoService {
         if (filme == null) {
             throw new RuntimeException("Filme não encontrado");
         }
+        sessao.setFilme(filme);
 
-        filme.getSessoes().add(sessao);
-
-        sessao.setId(UUID.randomUUID().toString());
-        sessoes.put(sessao.getId(), sessao);
-        return sessao;
+        return sessaoRepository.save(sessao);
     }
 
-    public Sessao atualizar(String id, Sessao sessaoAtualizar) {
+    public Sessao atualizar(Integer id, Sessao sessaoAtualizar) {
         Sessao sessao = buscarPorId(id);
 
         if (sessaoAtualizar.getHorario() != null) {
@@ -51,7 +50,7 @@ public class SessaoService {
         return sessao;
     }
 
-    public void deletar(String id) {
-        sessoes.remove(id);
+    public void deletar(Integer id) {
+        sessaoRepository.deleteById(id);
     }
 }

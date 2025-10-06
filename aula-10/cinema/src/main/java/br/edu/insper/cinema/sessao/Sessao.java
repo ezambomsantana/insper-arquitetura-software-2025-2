@@ -1,19 +1,26 @@
 package br.edu.insper.cinema.sessao;
 
 import br.edu.insper.cinema.filme.Filme;
+import jakarta.persistence.*;
 
+@Entity
 public class Sessao {
-    private String id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String horario;
     private String sala;
 
+    @ManyToOne
+    @JoinColumn(name = "id_filme")
     private Filme filme;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
