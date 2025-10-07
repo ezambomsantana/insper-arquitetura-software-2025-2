@@ -1,6 +1,8 @@
 package br.edu.insper.cinema.filme;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,8 +16,9 @@ public class FilmeController {
     private FilmeService filmeService;
 
     @GetMapping
-    public List<Filme> listarTodos() {
-        return filmeService.listarTodos();
+    public Page<Filme> listarTodos(@RequestParam(name = "duracao") Integer duracao,
+                                   Pageable pageable) {
+        return filmeService.listarTodos(duracao, pageable);
     }
 
     @GetMapping("/{id}")

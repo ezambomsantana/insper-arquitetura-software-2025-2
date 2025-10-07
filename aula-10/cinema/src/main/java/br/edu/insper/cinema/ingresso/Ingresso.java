@@ -14,7 +14,8 @@ public class Ingresso {
 
     private LocalDate dataCompra;
 
-    @Transient
+    @ManyToOne
+    @JoinColumn(name = "id_sessao")
     private Sessao sessao;
 
     @ManyToOne

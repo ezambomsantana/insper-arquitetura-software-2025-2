@@ -1,6 +1,8 @@
 package br.edu.insper.cinema.filme;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -12,8 +14,8 @@ public class FilmeService {
     @Autowired
     private FilmeRepository filmeRepository;
 
-    public List<Filme> listarTodos() {
-        return filmeRepository.findAll();
+    public Page<Filme> listarTodos(Integer duracao, Pageable pageable) {
+        return filmeRepository.findByDuracaoGreaterThanEqual(duracao, pageable);
     }
 
     public Filme buscarPorId(Integer id) {

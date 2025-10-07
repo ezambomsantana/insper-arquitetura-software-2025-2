@@ -1,6 +1,7 @@
 package br.edu.insper.cinema.filme;
 
 import br.edu.insper.cinema.sessao.Sessao;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -13,13 +14,14 @@ public class Filme {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String titulo;
 
     @Column(nullable = false)
     private String genero;
     private Integer duracao;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "filme")
     private List<Sessao> sessoes = new ArrayList<>();
 
