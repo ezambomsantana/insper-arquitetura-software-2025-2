@@ -14,6 +14,8 @@ public class Ingresso {
 
     private LocalDate dataCompra;
 
+    private Float preco;
+
     @ManyToOne
     @JoinColumn(name = "id_sessao")
     private Sessao sessao;
@@ -52,5 +54,13 @@ public class Ingresso {
 
     public void setDataCompra(LocalDate dataCompra) {
         this.dataCompra = dataCompra;
+    }
+
+    public Float getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Float preco) {
+        this.preco = preco;
     }
 }

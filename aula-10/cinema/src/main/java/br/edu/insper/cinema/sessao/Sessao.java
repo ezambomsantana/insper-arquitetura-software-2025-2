@@ -1,7 +1,12 @@
 package br.edu.insper.cinema.sessao;
 
 import br.edu.insper.cinema.filme.Filme;
+import br.edu.insper.cinema.ingresso.Ingresso;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Sessao {
@@ -12,9 +17,16 @@ public class Sessao {
     private String horario;
     private String sala;
 
+    private Integer totalIngressos;
+
     @ManyToOne
     @JoinColumn(name = "id_filme")
     private Filme filme;
+
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "sessao")
+    private List<Ingresso> ingressos = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -47,4 +59,21 @@ public class Sessao {
     public void setFilme(Filme filme) {
         this.filme = filme;
     }
+
+    public Integer getTotalIngressos() {
+        return totalIngressos;
+    }
+
+    public void setTotalIngressos(Integer totalIngressos) {
+        this.totalIngressos = totalIngressos;
+    }
+
+    public List<Ingresso> getIngressos() {
+        return ingressos;
+    }
+
+    public void setIngressos(List<Ingresso> ingressos) {
+        this.ingressos = ingressos;
+    }
+
 }
