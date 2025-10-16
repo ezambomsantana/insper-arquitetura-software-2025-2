@@ -2,8 +2,8 @@ package br.edu.insper.cinema.ingresso;
 
 import br.edu.insper.cinema.cliente.Cliente;
 import br.edu.insper.cinema.cliente.ClienteService;
-import br.edu.insper.cinema.sessao.Sessao;
-import br.edu.insper.cinema.sessao.SessaoService;
+import br.edu.insper.cinema.sessao.model.Sessao;
+import br.edu.insper.cinema.sessao.service.SessaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

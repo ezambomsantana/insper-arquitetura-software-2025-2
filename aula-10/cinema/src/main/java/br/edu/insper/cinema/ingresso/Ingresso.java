@@ -1,7 +1,7 @@
 package br.edu.insper.cinema.ingresso;
 
 import br.edu.insper.cinema.cliente.Cliente;
-import br.edu.insper.cinema.sessao.Sessao;
+import br.edu.insper.cinema.sessao.model.Sessao;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

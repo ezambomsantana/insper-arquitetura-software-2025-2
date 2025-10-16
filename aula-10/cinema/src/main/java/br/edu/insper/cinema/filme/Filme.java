@@ -1,6 +1,6 @@
 package br.edu.insper.cinema.filme;
 
-import br.edu.insper.cinema.sessao.Sessao;
+import br.edu.insper.cinema.sessao.model.Sessao;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 

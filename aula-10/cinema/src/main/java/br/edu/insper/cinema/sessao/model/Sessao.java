@@ -1,4 +1,4 @@
-package br.edu.insper.cinema.sessao;
+package br.edu.insper.cinema.sessao.model;
 
 import br.edu.insper.cinema.filme.Filme;
 import br.edu.insper.cinema.ingresso.Ingresso;
